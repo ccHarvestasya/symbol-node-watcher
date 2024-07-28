@@ -3,3 +3,4 @@ process.pid
 logfile.log
 dist/
 .yarn/install-state.gz
+.vscode/
