@@ -1,6 +1,8 @@
 import fetch from 'node-fetch'
 import { exec } from 'child_process'
 import { Config } from './config.js'
+import { Catapult } from './catapult.js'
+import { join } from 'path'
 
 const ERROR_MESSAGES = {
   SYMBOL_SERVICE_UNABILABLE: 'symbol.servicesが正常に稼働していません',
@@ -98,22 +100,37 @@ export default class NodeWatch {
       }
       const maxNode = nodesInfo.reduce((max, node) => (node.height > max.height ? node : max), nodesInfo[0])
 
-      let yourNodeChainInfoResponce
-      try {
-        yourNodeChainInfoResponce = await fetch(`http://localhost:3000/chain/info`)
-      } catch {
-        this.sendMessage(ERROR_MESSAGES.YOUR_NODE_IS_UNABILABLE)
-        this.nodeReboot()
-        return
+      let yourNodeChainInfo
+      if (this.config.enablePeerCheck) {
+        try {
+          const certPath = join(this.config.nodePath, this.config.certPath)
+          const catapult = new Catapult(certPath, '127.0.0.1', this.config.peerPort)
+          const nodeInfo = await catapult.getChainInfo()
+          yourNodeChainInfo = JSON.parse(nodeInfo)
+        } catch {
+          this.sendMessage(ERROR_MESSAGES.YOUR_NODE_IS_UNABILABLE)
+          this.nodeReboot()
+          return
+        }
+      } else {
+        let yourNodeChainInfoResponce
+        try {
+          yourNodeChainInfoResponce = await fetch(`http://localhost:3000/chain/info`)
+        } catch {
+          this.sendMessage(ERROR_MESSAGES.YOUR_NODE_IS_UNABILABLE)
+          this.nodeReboot()
+          return
+        }
+
+        if (yourNodeChainInfoResponce == undefined || !yourNodeChainInfoResponce.ok) {
+          this.sendMessage(ERROR_MESSAGES.YOUR_NODE_IS_UNABILABLE)
+          this.nodeReboot()
+          return
+        }
+
+        yourNodeChainInfo = (await yourNodeChainInfoResponce.json()) as any
       }
 
-      if (yourNodeChainInfoResponce == undefined || !yourNodeChainInfoResponce.ok) {
-        this.sendMessage(ERROR_MESSAGES.YOUR_NODE_IS_UNABILABLE)
-        this.nodeReboot()
-        return
-      }
-
-      const yourNodeChainInfo = (await yourNodeChainInfoResponce.json()) as any
       const yourNodeHeight = Number(yourNodeChainInfo.height)
       const yourNodeFinalizedHeight = Number(yourNodeChainInfo.latestFinalizedBlock.height)
 

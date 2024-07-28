@@ -5,5 +5,8 @@
   "symbolServiceUrl": "https://symbol.services/nodes?filter=suggested&limit=5",
   "differenceHeight": 5,
   "stopCommand": "symbol-bootstrap stop",
-  "runCommand": "symbol-bootstrap run -d"
+  "runCommand": "symbol-bootstrap run -d",
+  "enablePeerCheck": false,
+  "peerPort": 7900,
+  "certPath": "/target/nodes/node/cert"
 }

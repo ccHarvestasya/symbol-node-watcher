@@ -4,3 +4,4 @@ logfile.log
 dist/
 .yarn/install-state.gz
 .vscode/
+target/

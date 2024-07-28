@@ -8,6 +8,9 @@ export interface Config {
   differenceHeight: number
   stopCommand: string
   runCommand: string
+  enablePeerCheck: boolean
+  peerPort: number
+  certPath: string
 }
 
 export function loadConfig(configFilePath: string | undefined): Config {
@@ -16,6 +19,13 @@ export function loadConfig(configFilePath: string | undefined): Config {
     const config: Config = JSON.parse(configData)
 
     if (config.nodePath == '' || config.nodePath == undefined) throw new Error('can not find node path')
+
+    if (config.enablePeerCheck) {
+      if ((config.certPath == '' || config.certPath == undefined) && config.peerPort == undefined) {
+        throw new Error('can not find peer info')
+      }
+    }
+
     return JSON.parse(configData)
   } catch (error) {
     throw new Error('Error loading config file')
