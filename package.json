@@ -9,9 +9,7 @@
     "build": "tsc",
     "start": "node --loader ts-node/esm src/index.ts"
   },
-  "bin": {
-    "symbol-node-watcher": "./node-watcher.sh"
-  },
+  "bin": "./node-watcher.sh",
   "keywords": [],
   "author": "toshi",
   "license": "MIT",
