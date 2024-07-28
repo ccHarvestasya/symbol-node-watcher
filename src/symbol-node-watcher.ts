@@ -5,7 +5,7 @@ import { join } from 'path'
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'fs'
 const args = process.argv.slice(2)
 
-const PID_FILE_PATH = join(process.cwd(), 'process.pid')
+const PID_FILE_PATH = join('./', 'process.pid')
 if (args[0] === 'start') {
   startTask()
 } else if (args[0] === 'stop') {
