@@ -18,8 +18,6 @@ cd symbol-node-watcher
 ### Npm
 
 ```sh
-git clone https://github.com/ccHarvestasya/symbol-node-watcher.git
-cd symbol-node-watcher
 npm i
 npm run build
 sudo npm i -g .
@@ -28,8 +26,6 @@ sudo npm i -g .
 ### Yarn
 
 ```sh
-git clone https://github.com/ccHarvestasya/symbol-node-watcher.git
-cd symbol-node-watcher
 yarn
 yarn build
 sudo npm i -g .
