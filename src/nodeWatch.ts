@@ -103,11 +103,11 @@ export default class NodeWatch {
       let yourNodeChainInfo
       if (this.config.enablePeerCheck) {
         try {
-          const certPath = join(this.config.nodePath, this.config.certPath)
-          const catapult = new Catapult(certPath, '127.0.0.1', this.config.peerPort)
+          const catapult = new Catapult(this.config.certPath, '127.0.0.1', this.config.peerPort)
           const chainInfo = await catapult.getChainInfo()
           yourNodeChainInfo = JSON.parse(chainInfo)
-        } catch {
+        } catch (e) {
+          console.error(e)
           this.sendMessage(ERROR_MESSAGES.YOUR_NODE_IS_UNABILABLE)
           this.nodeReboot()
           return

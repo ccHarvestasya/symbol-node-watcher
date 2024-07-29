@@ -8,5 +8,5 @@
   "runCommand": "symbol-bootstrap run -d",
   "enablePeerCheck": false,
   "peerPort": 7900,
-  "certPath": "/target/nodes/node/cert"
+  "certPath": "cert"
 }
