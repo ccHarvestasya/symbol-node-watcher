@@ -8,10 +8,31 @@
 なお、本ライブラリは自身で使うために作成したものです。不具合等一切の責任は取りませんことをあらかじめご了承ください。
 MIT ライセンスです、お好きにご利用ください。
 
-## install
+## Install
 
 ```sh
-npm install symbol-node-watcher -g
+git clone https://github.com/ccHarvestasya/symbol-node-watcher.git
+cd symbol-node-watcher
+```
+
+### Npm
+
+```sh
+git clone https://github.com/ccHarvestasya/symbol-node-watcher.git
+cd symbol-node-watcher
+npm i
+npm run build
+sudo npm i -g .
+```
+
+### Yarn
+
+```sh
+git clone https://github.com/ccHarvestasya/symbol-node-watcher.git
+cd symbol-node-watcher
+yarn
+yarn build
+sudo npm i -g .
 ```
 
 ## Usage
