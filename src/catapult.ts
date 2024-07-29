@@ -1,5 +1,5 @@
-import { PacketBuffer } from './PacketBuffer.js'
-import { SslSocket } from './SslSocket.js'
+import { PacketBuffer } from './packetBuffer.js'
+import { SslSocket } from './sslSocket.js'
 
 class ChainInfo {
   constructor(

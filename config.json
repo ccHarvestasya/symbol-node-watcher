@@ -1,5 +1,5 @@
 {
-  "nodePath": "",
+  "nodePath": ".",
   "discordWebhookUrl": "",
   "cronExpression": "0 0 * * * *",
   "symbolServiceUrl": "https://symbol.services/nodes?filter=suggested&limit=5",

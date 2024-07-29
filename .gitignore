@@ -1,7 +1,7 @@
 node_modules/
 process.pid
-logfile.log
-dist/
+symbolNodeWatcher.log
+dist
 .yarn/install-state.gz
 .vscode/
 target/
