@@ -13,23 +13,14 @@ MIT ライセンスです、お好きにご利用ください。
 ```sh
 git clone https://github.com/ccHarvestasya/symbol-node-watcher.git
 cd symbol-node-watcher
-```
-
-### Npm
-
-```sh
 npm i
 npm run build
 sudo npm i -g .
 ```
 
-### Yarn
+### 証明書
 
-```sh
-yarn
-yarn build
-sudo npm i -g .
-```
+ノードの証明書は使用できないので、別途 symbol-node-configurator などで証明書を作成してください。
 
 ## Usage
 
