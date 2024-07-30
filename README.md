@@ -39,7 +39,7 @@ sudo npm i -g .
   "runCommand": "symbol-bootstrap run -d",
   "enablePeerCheck": false,
   "peerPort": 7900,
-  "certPath": "/target/nodes/node/cert"
+  "certPath": "cert"
 }
 ```
 
@@ -55,7 +55,7 @@ sudo npm i -g .
 - `runCommand` bootstrap の場合はこのままで OK。
 - `enablePeerCheck` Peer ノードの場合、`true`にする。
 - `peerPort` 7900 で OK。
-- `certPath` bootstrap の場合はこのままで OK。
+- `certPath` symbol-node-configurator などで作成した証明書の場所。
 
 ### 起動
 
