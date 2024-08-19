@@ -5,17 +5,30 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "node --loader ts-node/esm src/index.ts"
+    "build": "shx rm -rf dist && tsc",
+    "lint": "prettier ./src --write && eslint ./src --ext ts,tsx --report-unused-disable-directives",
+    "lint:fix": "prettier ./src --write && eslint ./src --ext ts,tsx --report-unused-disable-directives --fix",
+    "start": "node --loader ts-node/esm src/index.ts",
+    "npm:publish": "npm run build && publish",
+    "npm:publish:dry": "npm run build && npm publish --dry-run"
   },
   "bin": "./node-watcher.sh",
+  "files": [
+    "/dist"
+  ],
   "keywords": [],
   "author": "toshi",
   "license": "MIT",
   "devDependencies": {
+    "@types/eslint": "^9",
     "@types/node": "^20.14.1",
     "@types/node-cron": "^3.0.11",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "eslint": "8.57",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
     "tsx": "^4.16.2",
