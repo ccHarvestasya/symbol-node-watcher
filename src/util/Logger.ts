@@ -1,7 +1,7 @@
 import log4js from 'log4js'
 
-const logLevel = 'all'
-// const logLevel = 'info'
+// const logLevel = 'all'
+const logLevel = 'info'
 
 log4js.configure({
   appenders: {
