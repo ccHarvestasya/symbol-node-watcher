@@ -12,10 +12,10 @@
     "npm:publish": "npm run build && publish",
     "npm:publish:dry": "npm run build && npm publish --dry-run"
   },
-  "bin": "./sh/node-watcher.sh",
+  "bin": "./node-watcher.sh",
   "files": [
-    "/dist",
-    "sh"
+    "dist",
+    "node-watcher.sh"
   ],
   "keywords": [],
   "author": "toshi",
