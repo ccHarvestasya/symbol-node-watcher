@@ -10,15 +10,5 @@
       "jsx": true
     }
   },
-  "rules": {
-    "unicorn/filename-case": [
-      "error",
-      {
-        "cases": {
-          "camelCase": true,
-          "pascalCase": true
-        }
-      }
-    ]
-  }
+  "rules": {}
 }

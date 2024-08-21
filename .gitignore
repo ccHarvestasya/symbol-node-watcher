@@ -5,3 +5,4 @@ dist
 .yarn/install-state.gz
 .vscode/
 cert/
+*.log

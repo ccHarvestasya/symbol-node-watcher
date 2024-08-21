@@ -1,12 +1,13 @@
 {
   "nodePath": ".",
   "discordWebhookUrl": "",
-  "cronExpression": "0 0 * * * *",
+  "cronExpression": "0 */1 * * * *",
   "symbolServiceUrl": "https://symbol.services/nodes?filter=suggested&limit=5",
   "differenceHeight": 5,
   "stopCommand": "symbol-bootstrap stop",
   "runCommand": "symbol-bootstrap run -d",
   "enablePeerCheck": false,
   "peerPort": 7900,
-  "certPath": "cert"
+  "certPath": "cert",
+  "isDebug": "true"
 }
