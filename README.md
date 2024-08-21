@@ -1,4 +1,4 @@
-# Symbol Node Watcher
+# Symbol Node Watcher Peer対応版
 
 ## 何が出来るのか
 
@@ -20,7 +20,12 @@ sudo npm i -g .
 
 ### 証明書
 
-ノードの証明書は使用できないので、別途 symbol-node-configurator などで証明書を作成してください。
+動いているノードの証明書は使用できないので、別途 simple-symbol-node-cert-cli などで証明書を作成してください。
+
+```sh
+sudo npm i -g simple-symbol-node-cert-cli
+simple-symbol-node-cert-cli generate --nodedays 7300
+```
 
 ## Usage
 
@@ -35,6 +40,7 @@ sudo npm i -g .
   "cronExpression": "0 0 * * * *",
   "symbolServiceUrl": "https://symbol.services/nodes?filter=suggested&limit=5",
   "differenceHeight": 5,
+  "differenceFinHeight": 100,
   "stopCommand": "symbol-bootstrap stop",
   "runCommand": "symbol-bootstrap run -d",
   "enablePeerCheck": false,
@@ -51,6 +57,7 @@ sudo npm i -g .
 - `cronExpression` cron の設定。秒/分/時/日/月/曜日。
 - `symbolServiceUrl` ここから他のノードの情報を取得しています、基本的にはこのままで良い。ここが停止すると使えない。
 - `differenceHeight` 他のノード群の最大ブロックと自分のブロックの差がこれ以上になると異常と判断します。
+- `differenceFinHeight` 他のノード群の最大ファイナライズと自分のファイナライズの差がこれ以上になると異常と判断します。
 - `stopCommand` bootstrap の場合はこのままで OK。
 - `runCommand` bootstrap の場合はこのままで OK。
 - `enablePeerCheck` Peer ノードの場合、`true`にする。
@@ -91,11 +98,8 @@ trustedHosts: 127.0.0.1, 172.20.0.1
 
 #### 別ツールで証明書を使用している場合
 
-別ツールで使用している証明書を流用してください。
-
-#### ノードの証明書を使い回している場合
-
-別途、証明書を生成してください。
+別ツールで使用している証明書を流用してください。  
+同IP、別証明書の場合、リジェクト対象となります。
 
 ## さいごに
 
